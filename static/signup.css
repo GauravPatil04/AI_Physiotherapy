@@ -1,0 +1,24 @@
+body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #000000;
+            margin: 0;
+        }
+        .gradient-btn {
+            background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .gradient-btn:hover {
+            background: linear-gradient(135deg, #1d4ed8 0%, #4338ca 100%);
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
+            transform: translateY(-1px);
+        }
+        .input-dark {
+            background-color: #0f0f0f;
+            border-color: #262626;
+            transition: all 0.2s ease;
+        }
+        .input-dark:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.2);
+            outline: none;
+        }

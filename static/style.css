@@ -1,0 +1,133 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+ 
+.container {
+    background: white;
+    padding: 30px;
+    width: 360px; /* slightly wider for inputs */
+    border-radius: 12px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+ 
+h2 {
+    margin-bottom: 25px;
+    color: #333;
+}
+ 
+/* Input group with icon */
+.input-group {
+    position: relative;
+    margin: 12px 0;
+}
+ 
+.input-group i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 16px;
+}
+ 
+.input-group input {
+    width: 100%;
+    padding: 12px 12px 12px 40px; /* padding left enough for icon */
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    box-sizing: border-box; /* prevents overflow */
+}
+ 
+/* Login button */
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    background-color: #2d89ef;
+    color: white;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+ 
+.login-btn:hover {
+    background-color: #1b5fbf;
+}
+ 
+/* Divider */
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+ 
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #ccc;
+}
+ 
+.divider span {
+    margin: 0 10px;
+    color: #777;
+    font-size: 14px;
+}
+ 
+/* Google button */
+.google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: white;
+    color: #444;
+    font-weight: 500;
+    transition: 0.3s;
+    width: 100%;
+    margin: 0 auto 15px auto;
+    box-sizing: border-box;
+}
+ 
+.google-btn img {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+ 
+/* Google button hover */
+.google-btn:hover {
+    background-color: #f5f5f5;
+}
+ 
+/* Signup text */
+.signup-text {
+    font-size: 14px;
+    color: #555;
+    margin-top: 10px;
+}
+ 
+.signup-text a {
+    color: #2d89ef;
+    text-decoration: none;
+}
+ 
+.signup-text a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="view-transition" content="same-origin">
+    <title>REHABMATE - Exercise History</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Icons -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/history.css">
+</head>
+
+<body>
+    <div class="min-h-screen bg-black text-white flex flex-col p-4 md:p-8 lg:p-12">
+
+        <div class="max-w-5xl w-full mx-auto space-y-10 animate-enter">
+
+            <!-- Header -->
+            <header class="flex items-center justify-between pb-6 border-b border-zinc-900">
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                        <iconify-icon icon="lucide:activity" class="text-black text-xl"></iconify-icon>
+                    </div>
+
+                    <div>
+                        <h1 class="text-2xl font-bold tracking-tight">Exercise History</h1>
+                        <p class="text-zinc-500 text-sm">Track your progress with REHABMATE | {{ user_name }}</p>
+                    </div>
+                </div>
+
+                <a href="/dashboard"
+                    class="flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-sm font-medium hover:bg-zinc-800 transition-all">
+                    <iconify-icon icon="lucide:arrow-left"></iconify-icon>
+                    <span>Dashboard</span>
+                </a>
+            </header>
+
+            <!-- Summary -->
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <div class="glass-card p-6 rounded-2xl flex flex-col gap-2">
+                    <span class="text-zinc-500 text-xs font-bold uppercase tracking-widest">Total Sessions</span>
+                    <span class="text-4xl font-extrabold">{{ total_sessions }}</span>
+                    <span class="text-zinc-500 text-xs">Total exercise records completed</span>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl flex flex-col gap-2">
+                    <span class="text-zinc-500 text-xs font-bold uppercase tracking-widest">Active Days</span>
+                    <span class="text-4xl font-extrabold">{{ active_days }}</span>
+                    <span class="text-zinc-500 text-xs">Days with at least one exercise</span>
+                </div>
+
+            </section>
+
+            <!-- Activity -->
+            <div class="space-y-4">
+
+                <div class="flex items-center justify-between px-2">
+                    <h2 class="text-lg font-bold">Recent Activity</h2>
+                </div>
+
+                <div class="overflow-x-auto rounded-2xl border border-zinc-900 bg-[#070707]">
+                    <table class="w-full text-left border-collapse">
+
+                        <!-- Table Head -->
+                        <thead class="bg-[#0f0f0f] text-zinc-400 text-xs font-bold uppercase tracking-wider">
+                            <tr>
+                                <th class="px-6 py-4">Exercise</th>
+                                <th class="px-6 py-4">Date</th>
+                                <th class="px-6 py-4">Total Reps</th>
+                                <th class="px-6 py-4 text-emerald-500">Correct</th>
+                            </tr>
+                        </thead>
+
+                        <!-- Table Body -->
+                        <tbody class="divide-y divide-zinc-900">
+
+                            {% for session in sessions %}
+                            <tr class="hover:bg-zinc-900/30 transition-colors group">
+                                <td class="px-6 py-5">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-white">
+                                            <iconify-icon icon="lucide:dumbbell"></iconify-icon>
+                                        </div>
+                                        <span class="font-semibold">{{ session.exercise_name }}</span>
+                                    </div>
+                                </td>
+
+                                <td class="px-6 py-5 text-zinc-300">{{ session.session_date }}</td>
+                                <td class="px-6 py-5 text-zinc-300">{{ session.total_reps }}</td>
+                                <td class="px-6 py-5 text-zinc-300 font-medium">{{ session.correct_reps }}</td>
+                            </tr>
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="pt-8 flex flex-col md:flex-row items-center justify-between border-t border-zinc-900 gap-6">
+                <p class="text-zinc-600 text-xs uppercase tracking-widest font-semibold">
+                    REHABMATE Tracking Engine v2.4
+                </p>
+
+                <div class="flex gap-6">
+                    <a href="/dashboard" class="text-zinc-500 hover:text-white text-sm">Dashboard</a>
+                    <a href="/feedback_page" class="text-zinc-500 hover:text-white text-sm">Submit Feedback</a>
+                    <a href="/logout" class="text-zinc-500 hover:text-white text-sm">Logout</a>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+</body>
+
+</html>

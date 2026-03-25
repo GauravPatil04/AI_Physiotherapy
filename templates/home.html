@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RehabMate</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="/static/home.css">
+</head>
+<body>
+  <div class="min-h-screen bg-black text-white">
+    <!-- Subtle texture / vignette -->
+    <div class="pointer-events-none fixed inset-0">
+      <div class="absolute inset-0 bg-[radial-gradient(1200px_700px_at_50%_20%,rgba(255,255,255,0.10),transparent_60%)]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(900px_500px_at_50%_110%,rgba(255,255,255,0.06),transparent_55%)]"></div>
+      <div class="absolute inset-0 opacity-[0.08] mix-blend-soft-light bg-[linear-gradient(0deg,transparent,transparent),url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22160%22%20height%3D%22160%22%20viewBox%3D%220%200%20160%20160%22%3E%3Cfilter%20id%3D%22n%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.9%22%20numOctaves%3D%222%22%20stitchTiles%3D%22stitch%22/%3E%3C/filter%3E%3Crect%20width%3D%22160%22%20height%3D%22160%22%20filter%3D%22url(%23n)%22%20opacity%3D%220.25%22/%3E%3C/svg%3E')]"></div>
+    </div>
+
+    <header class="relative">
+      <div class="mx-auto max-w-6xl px-6 pt-6">
+        <div class="flex items-center justify-between">
+          <div class="h-10 w-10 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center">
+            <iconify-icon icon="lucide:activity" class="text-xl text-white"></iconify-icon>
+          </div>
+
+          <a id="login-button" href="/login_page" class="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white hover:bg-white/10 hover:border-white/25 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black">
+            <iconify-icon icon="lucide:log-in" class="text-lg"></iconify-icon>
+            Login
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="relative">
+      <section class="mx-auto max-w-6xl px-6">
+        <div class="min-h-[calc(900px-96px)] flex items-center justify-center py-16 md:py-24">
+          <div class="w-full max-w-3xl text-center">
+            <div class="mb-8 flex items-center justify-center gap-3">
+              <span class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/80">
+                <span class="h-1.5 w-1.5 rounded-full bg-white/70"></span>
+                AI-powered physiotherapy assistant
+              </span>
+            </div>
+
+            <h1 class="font-[Satoshi] text-4xl md:text-6xl tracking-tight font-semibold leading-[1.05]">
+              RehabMate
+            </h1>
+
+            <p class="mt-7 text-base md:text-lg leading-relaxed text-white/85">
+              RehabMate is an AI-powered physiotherapy assistant designed to make rehabilitation smarter, accessible, and more effective. Using advanced computer vision techniques, the system analyzes body movements in real time through a standard webcam, providing instant feedback on posture and exercise form. By transforming physical movements into measurable data like joint angles and range of motion, RehabMate enables accurate, objective, and consistent assessment without the need for expensive equipment. It empowers patients to perform exercises safely at home while supporting clinicians with data-driven insights for better treatment outcomes.
+            </p>
+
+            <div class="mt-10">
+              <p class="text-sm md:text-base font-medium text-white/80">
+                For more info, watch below
+              </p>
+
+              <div style="position:relative;padding-bottom:56.25%;height:0;">
+              <iframe src="https://www.youtube.com/embed/Sy6emSOKlQY"
+                style="position:absolute;width:100%;height:100%;"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+            </iframe>
+            </div>
+            </div>
+
+            <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-3 text-left">
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <div class="flex items-center gap-2">
+                  <iconify-icon icon="lucide:camera" class="text-lg text-white"></iconify-icon>
+                  <h2 class="text-sm font-semibold text-white tracking-tight">Webcam-ready</h2>
+                </div>
+                <p class="mt-2 text-sm leading-relaxed text-white/70">Works with a standard webcam for real-time movement analysis.</p>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <div class="flex items-center gap-2">
+                  <iconify-icon icon="lucide:ruler" class="text-lg text-white"></iconify-icon>
+                  <h2 class="text-sm font-semibold text-white tracking-tight">Objective metrics</h2>
+                </div>
+                <p class="mt-2 text-sm leading-relaxed text-white/70">Transforms motion into measurable joint angles and range of motion.</p>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <div class="flex items-center gap-2">
+                  <iconify-icon icon="lucide:shield-check" class="text-lg text-white"></iconify-icon>
+                  <h2 class="text-sm font-semibold text-white tracking-tight">Safer at home</h2>
+                </div>
+                <p class="mt-2 text-sm leading-relaxed text-white/70">Instant feedback helps patients maintain good form and reduce risk.</p>
+              </div>
+            </div>
+
+            <p class="mt-10 text-xs text-white/50">
+              © <span class="tabular-nums">2026</span> RehabMate. Built for accessible, data-driven recovery.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

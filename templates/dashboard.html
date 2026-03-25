@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="view-transition" content="same-origin">
+    <title>REHABMATE - Exercise Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/dashboard.css">
+</head>
+<body>
+    <div class="min-h-screen bg-black flex flex-col p-4 md:p-8 lg:p-12">
+        <div class="max-w-6xl w-full mx-auto animate-enter">
+            
+            <!-- Top Navigation / Profile -->
+            <div class="flex justify-end mb-8 relative">
+                <div class="profile-container relative group">
+                    <button 
+                        id="profile-btn" 
+                        onclick="toggleDropdown()"
+                        class="flex items-center gap-3 px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-zinc-700 transition-all text-sm font-medium"
+                    >
+                        <div class="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-500">
+                            <iconify-icon icon="lucide:user"></iconify-icon>
+                        </div>
+                        <span id="username">{{ user_name }}</span>
+                        <iconify-icon icon="lucide:chevron-down" class="text-zinc-500"></iconify-icon>
+                    </button>
+                    
+                    <!-- Dropdown Menu -->
+                    <div id="profile-dropdown" class="hidden absolute right-0 top-[110%] w-48 bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden z-50 dropdown-shadow">
+                        <a href="/history" id="nav-history-link" class="flex items-center gap-3 px-4 py-3 text-zinc-300 hover:bg-zinc-800 hover:text-white transition-colors border-b border-zinc-800">
+                            <iconify-icon icon="lucide:bar-chart-3"></iconify-icon>
+                            <span>History</span>
+                        </a>
+                        <a href="/feedback_page" id="nav-feedback-link" class="flex items-center gap-3 px-4 py-3 text-zinc-300 hover:bg-zinc-800 hover:text-white transition-colors border-b border-zinc-800">
+                            <iconify-icon icon="lucide:message-square"></iconify-icon>
+                            <span>Feedback</span>
+                        </a>
+                        <a href="/logout" id="nav-logout-link" class="flex items-center gap-3 px-4 py-3 text-rose-400 hover:bg-rose-950/30 transition-colors">
+                            <iconify-icon icon="lucide:log-out"></iconify-icon>
+                            <span>Logout</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Header -->
+            <header class="text-center mb-16 space-y-3">
+                <div class="inline-flex items-center justify-center w-14 h-14 bg-white rounded-2xl mb-2">
+                    <iconify-icon icon="lucide:activity" class="text-black text-3xl"></iconify-icon>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">RehabMate</h1>
+                <p class="text-zinc-400 text-lg max-w-2xl mx-auto">
+                    Read instructions carefully, then open a specific exercise for live AI tracking and form correction.
+                </p>
+            </header>
+
+            <!-- Exercise Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                
+                <!-- Card 1: Squats -->
+                <section class="glass-card p-8 rounded-3xl flex flex-col">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="space-y-1">
+                            <h2 class="text-2xl font-bold">Squats</h2>
+                            <p class="text-zinc-500 text-sm">Lower body & core stability</p>
+                        </div>
+                        <iconify-icon icon="lucide:dumbbell" class="text-blue-500 text-3xl"></iconify-icon>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="tag-pill px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">Knee: 80-110 deg</span>
+                        <span class="tag-pill px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">Hip: 70-110 deg</span>
+                    </div>
+
+                    <ol class="space-y-3 text-zinc-300 text-sm mb-8 flex-grow">
+                        <li class="flex gap-3">
+                            <span class="text-blue-500 font-bold">01</span>
+                            <span>Stand with feet shoulder-width apart.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-blue-500 font-bold">02</span>
+                            <span>Keep your back straight and chest up.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-blue-500 font-bold">03</span>
+                            <span>Lower by bending knees and hips with control.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-blue-500 font-bold">04</span>
+                            <span>Push through heels to return to standing.</span>
+                        </li>
+                    </ol>
+
+                    <button onclick="openExercise('squats')" id="btn-squats" class="gradient-btn w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2">
+                        <span>Open Squats</span>
+                        <iconify-icon icon="lucide:play" class="text-xl"></iconify-icon>
+                    </button>
+                </section>
+
+                <!-- Card 2: Hip Flexion -->
+                <section class="glass-card p-8 rounded-3xl flex flex-col">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="space-y-1">
+                            <h2 class="text-2xl font-bold">Hip Flexion</h2>
+                            <p class="text-zinc-500 text-sm">Hip mobility & muscle control</p>
+                        </div>
+                        <iconify-icon icon="lucide:accessibility" class="text-blue-500 text-3xl"></iconify-icon>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="tag-pill px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">Hip: 130-140 deg</span>
+                        <span class="tag-pill px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">Torso tilt: &lt; 25 deg</span>
+                    </div>
+
+                    <ol class="space-y-3 text-zinc-300 text-sm mb-8 flex-grow">
+                        <li class="flex gap-3">
+                            <span class="text-blue-500 font-bold">01</span>
+                            <span>Stand upright facing the camera.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-blue-500 font-bold">02</span>
+                            <span>Keep supporting leg straight.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-blue-500 font-bold">03</span>
+                            <span>Lift active leg to target angle, then lower slowly.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-blue-500 font-bold">04</span>
+                            <span>Follow real-time cues to improve form.</span>
+                        </li>
+                    </ol>
+
+                    <button onclick="openExercise('hip_flexion')" id="btn-hip-flexion" class="gradient-btn w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2">
+                        <span>Open Hip Flexion</span>
+                        <iconify-icon icon="lucide:play" class="text-xl"></iconify-icon>
+                    </button>
+                </section>
+
+                <!-- Card 3: Knee Extension -->
+                <section class="glass-card p-8 rounded-3xl flex flex-col">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="space-y-1">
+                            <h2 class="text-2xl font-bold">Knee Extension</h2>
+                            <p class="text-zinc-500 text-sm">Quadriceps strengthening</p>
+                        </div>
+                        <iconify-icon icon="lucide:leg" class="text-blue-500 text-3xl"></iconify-icon>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="tag-pill px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">Extension: &gt;145 deg</span>
+                        <span class="tag-pill px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">Back upright</span>
+                    </div>
+
+                    <ol class="space-y-3 text-zinc-300 text-sm mb-8 flex-grow">
+                        <li class="flex gap-3">
+                            <span class="text-blue-500 font-bold">01</span>
+                            <span>Sit on a chair with your back straight.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-blue-500 font-bold">02</span>
+                            <span>Extend knee until leg is straight.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-blue-500 font-bold">03</span>
+                            <span>Hold for about 2 seconds.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-blue-500 font-bold">04</span>
+                            <span>Return slowly to start position.</span>
+                        </li>
+                    </ol>
+
+                    <button onclick="openExercise('knee_extension')" id="btn-knee-extension" class="gradient-btn w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2">
+                        <span>Open Knee Extension</span>
+                        <iconify-icon icon="lucide:play" class="text-xl"></iconify-icon>
+                    </button>
+                </section>
+
+                <!-- Card 4: Hip Abduction -->
+                <section class="glass-card p-8 rounded-3xl flex flex-col">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="space-y-1">
+                            <h2 class="text-2xl font-bold">Hip Abduction (Standing)</h2>
+                            <p class="text-zinc-500 text-sm">Gluteus medius & lateral stability</p>
+                        </div>
+                        <iconify-icon icon="lucide:move" class="text-blue-500 text-3xl"></iconify-icon>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="tag-pill px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">Abduction: 25-50 deg</span>
+                        <span class="tag-pill px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">Torso tilt: &lt; 15 deg</span>
+                    </div>
+
+                    <ol class="space-y-3 text-zinc-300 text-sm mb-8 flex-grow">
+                        <li class="flex gap-3">
+                            <span class="text-blue-500 font-bold">01</span>
+                            <span>Stand upright facing camera.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-blue-500 font-bold">02</span>
+                            <span>Keep torso straight and knee extended.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-blue-500 font-bold">03</span>
+                            <span>Lift one leg sideways to target range.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-blue-500 font-bold">04</span>
+                            <span>Lower slowly and repeat with control.</span>
+                        </li>
+                    </ol>
+
+                    <button onclick="openExercise('hip_abduction_standing')" id="btn-hip-abduction" class="gradient-btn w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2">
+                        <span>Open Hip Abduction (Standing)</span>
+                        <iconify-icon icon="lucide:play" class="text-xl"></iconify-icon>
+                    </button>
+                </section>
+
+                <!-- Card 5: Hip Abduction (Sleeping) -->
+                <section class="glass-card p-8 rounded-3xl flex flex-col">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="space-y-1">
+                            <h2 class="text-2xl font-bold">Hip Abduction (Sleeping)</h2>
+                            <p class="text-zinc-500 text-sm">Lateral hip strength</p>
+                        </div>
+                        <iconify-icon icon="lucide:bed" class="text-blue-500 text-3xl"></iconify-icon>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="tag-pill px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">Abduction: 25-50 deg</span>
+                        <span class="tag-pill px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">Back flat: < 15 deg</span>
+                    </div>
+
+                    <ol class="space-y-3 text-zinc-300 text-sm mb-8 flex-grow">
+                        <li class="flex gap-3">
+                            <span class="text-blue-500 font-bold">01</span>
+                            <span>Lie on your side with both legs straight.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-blue-500 font-bold">02</span>
+                            <span>Keep your bottom leg still.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-blue-500 font-bold">03</span>
+                            <span>Lift your top leg slowly to target angle.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-blue-500 font-bold">04</span>
+                            <span>Lower with control and repeat.</span>
+                        </li>
+                    </ol>
+
+                    <button onclick="openExercise('hip_abduction_sleeping')" id="btn-hip-abduction-sleeping" class="gradient-btn w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2">
+                        <span>Open Hip Abduction (Sleeping)</span>
+                        <iconify-icon icon="lucide:play" class="text-xl"></iconify-icon>
+                    </button>
+                </section>
+            </div>
+
+            <!-- Footer Status -->
+            <div class="mt-12 text-center">
+                <p class="text-zinc-500 text-sm flex items-center justify-center gap-2" id="status-text">
+                    <iconify-icon icon="lucide:info" class="text-blue-500"></iconify-icon>
+                    Select an exercise to open live AI tracking.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script src="/static/dashboard.js"></script>
+</body>
+</html>
