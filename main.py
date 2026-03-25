@@ -522,7 +522,9 @@ def generate_frames():
 def video_feed():
     return StreamingResponse(generate_frames(),
                              media_type="multipart/x-mixed-replace; boundary=frame")
-
+@app.get("/health")
+def health():
+    return {"status": "ok"}
 
 if __name__ == "__main__":
     import uvicorn
