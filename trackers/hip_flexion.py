@@ -1,11 +1,13 @@
 import cv2
 import mediapipe as mp
+from mediapipe import solutions as mp_solutions
 import numpy as np
 from collections import deque
 
 class HipFlexionTracker:
     def __init__(self):
-        self.mp_pose = mp.solutions.pose
+        self.mp_pose = mp_solutions.pose
+        self.pose = self.mp_pose.Pose()
         self.mp_drawing = mp.solutions.drawing_utils
         self.pose = self.mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5)
 
