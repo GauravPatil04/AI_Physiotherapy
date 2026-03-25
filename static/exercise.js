@@ -51,7 +51,7 @@ async function startTracking(){
     }
 
     if (!frameInterval) {
-        frameInterval = setInterval(sendFrame, 300);
+        frameInterval = setInterval(sendFrame, 700);
     }
 }
 
